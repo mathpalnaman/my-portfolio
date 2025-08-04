@@ -51,7 +51,7 @@ export function About() {
             <div className="space-y-8">
               {/* Education */}
               <div className="modern-card p-8 group">
-                <div className="flex items-start gap-6">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
                   <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-400 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <GraduationCap className="w-10 h-10 text-white" />
                   </div>
@@ -75,7 +75,7 @@ export function About() {
 
               {/* Experience */}
               <div className="modern-card p-8 group">
-                <div className="flex items-start gap-6">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
                   <div className="w-20 h-20 bg-gradient-to-br from-accent to-accent-400 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <Briefcase className="w-10 h-10 text-white" />
                   </div>
@@ -85,7 +85,7 @@ export function About() {
                       <div className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                         Front-End Developer Intern
                       </div>
-                      <div className="flex items-center gap-4 mb-4">
+                      <div className="flex items-center justify-center sm:justify-start gap-4 mb-4">
                         <div className="rating-modern flex items-center gap-2">
                           <Star className="w-4 h-4 rating-star" />
                           <span className="font-bold">4.8 Rating</span>
@@ -108,19 +108,19 @@ export function About() {
             <div className="space-y-8">
               {/* Competitive Programming */}
               <div className="modern-card p-8 group">
-                <div className="flex items-start gap-6">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
                   <div className="w-20 h-20 bg-gradient-to-br from-coral to-coral-400 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <Trophy className="w-10 h-10 text-white" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold gradient-text mb-4">Competitive Programming</h3>
-                    <div className="flex items-center gap-4 mb-6">
+                    <div className="flex items-center justify-center sm:justify-start gap-4 mb-6">
                       <div className="bg-gradient-to-r from-primary/10 to-accent/10 text-primary border-2 border-primary/20 px-6 py-3 rounded-2xl">
                         <span className="text-3xl font-bold">150+</span>
                         <span className="text-lg ml-2 font-semibold">Problems</span>
                       </div>
                     </div>
-                    <div className="flex gap-3 mb-6">
+                    <div className="flex justify-center sm:justify-start gap-3 mb-6">
                       {["LeetCode", "HackerRank", "CodeChef"].map((platform) => (
                         <span key={platform} className="modern-chip font-semibold">
                           {platform}
@@ -136,7 +136,7 @@ export function About() {
 
               {/* Technical Skills */}
               <div className="modern-card p-8">
-                <div className="flex items-start gap-6">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
                   <div className="w-20 h-20 bg-gradient-to-br from-primary via-accent to-coral rounded-3xl flex items-center justify-center flex-shrink-0">
                     <Code className="w-10 h-10 text-white" />
                   </div>
@@ -148,7 +148,7 @@ export function About() {
                           <h4 className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3 uppercase tracking-wide">
                             {category}
                           </h4>
-                          <div className="flex flex-wrap gap-3">
+                          <div className="flex flex-wrap justify-center sm:justify-start gap-3">
                             {skills.map((skill) => (
                               <span key={skill} className="modern-chip font-semibold">
                                 {skill}
