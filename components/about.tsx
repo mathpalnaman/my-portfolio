@@ -1,11 +1,11 @@
 import { GraduationCap, Code, Trophy, Briefcase, Star, Sparkles, Target, Zap } from "lucide-react"
 
 const technicalSkills = {
-  Languages: ["Python", "C/C++", "SQL", "Java", "JavaScript", "TypeScript", "HTML/CSS"],
-  Frameworks: ["React.js", "Next.js", "Node.js", "WordPress", "FastAPI", "Truffle", "Express.js"],
-  DBMS: ["MongoDB", "PostgreSQL", "MySQL", "Redis"],
+  Languages: ["Python", "C/C++", "SQL", "JavaScript", "TypeScript", "HTML/CSS"],
+  Frameworks: ["React.js", "Next.js", "Node.js", "FastAPI", "Truffle", "Express.js"],
+  DBMS: ["MongoDB", "PostgreSQL", "MySQL"],
   Tools: ["Git", "VS Code", "PyCharm", "Blender", "Cursor", "Docker", "Figma"],
-  Libraries: ["Pandas", "NumPy", "Matplotlib", "D3.js", "Chart.js"],
+  Libraries: ["Zustand", "Pandas", "NumPy", "Matplotlib"],
   Coursework: ["Web Design", "DAA", "OS", "OOP", "DBMS", "Software Engineering", "AI/ML"],
 }
 

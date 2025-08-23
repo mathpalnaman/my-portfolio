@@ -4,6 +4,18 @@ import { ExternalLink } from "lucide-react"
 
 const projects = [
   {
+    title: "Data Alchemist - AI-Powered Data Configuration Tool",
+    description:
+      "A full-stack web application built with Next.js to streamline data preparation for resource allocation. Users can upload, validate, and configure complex datasets using an intuitive UI. Features two distinct Google Gemini AI integrations for natural language search and rule generation, with complex client-side state managed by Zustand.",
+    image: "/data-alchemist-icon.png",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "Gemini API", "Shadcn/UI"],
+    rating: 4.8,
+    status: "Completed August 2025",
+    demoUrl: "https://data-alchemist-woad-five.vercel.app/",
+    githubUrl: "https://github.com/mathpalnaman/data-alchemist",
+    featured: true,
+  },
+  {
     title: "Vichar - Chain Your Thoughts",
     description:
       "A full-stack AI-powered idea validation tool enabling structured assessment of feasibility, market fit, and risks. Built with PostgreSQL-backed API to process user input, abstract core insights, and generate detailed analysis reports for entrepreneurs and product teams. Integrated Truffle and Ganache to simulate a blockchain network for timestamping validated ideas, ensuring proof of originality and ownership.",
