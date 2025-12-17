@@ -61,9 +61,9 @@ export function Header() {
             {/* Social Links */}
             <div className="hidden sm:flex items-center space-x-2">
               {[
-                { icon: Github, href: "https://github.com", label: "GitHub" },
+                { icon: Github, href: "https://github.com/mathpalnaman", label: "GitHub" },
                 { icon: Linkedin, href: "https://www.linkedin.com/in/naman-mathpal-483297241/", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:naman.mathpal@example.com", label: "Email" },
+                { icon: Mail, href: "mailto:naman.work.mathpal@gmail.com", label: "Email" },
               ].map(({ icon: Icon, href, label }) => (
                 <Button
                   key={label}

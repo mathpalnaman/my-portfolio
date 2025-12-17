@@ -36,10 +36,10 @@ export function Contact() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Email</h3>
-                    <p className="text-slate-600 dark:text-slate-400 mb-4 text-lg">naman.mathpal@example.com</p>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4 text-lg">naman.work.mathpal@gmail.com</p>
                     <button 
                       className="bg-gradient-to-r from-primary to-primary-400 text-white px-6 py-3 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2"
-                      onClick={() => window.location.href = 'mailto:naman.mathpal@example.com'}
+                      onClick={() => window.location.href = 'mailto:naman.work.mathpal@gmail.com'}
                     >
                       <Send className="w-4 h-4" />
                       Send Email
@@ -104,7 +104,7 @@ export function Contact() {
                 hear from you. Let's build something incredible together.
               </p>
               <a 
-                href="mailto:naman.mathpal@example.com" 
+                href="mailto:naman.work.mathpal@gmail.com" 
                 className="modern-button w-full flex items-center justify-center gap-3 group"
               >
                 <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -117,6 +117,12 @@ export function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
+
+
+
+
+
+                
                 icon: Clock,
                 value: "< 24h",
                 label: "Response Time",

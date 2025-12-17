@@ -46,7 +46,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href="/NAMAN_MATHPAL_RESUME%208.pdf"
+                    href="/naman_resume3.pdf"
                     className="text-gray-300 hover:text-primary transition-colors text-sm"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -92,7 +92,7 @@ export function Footer() {
                   className="h-10 w-10 bg-white/10 hover:bg-white/20 text-white hover:text-white border-0"
                   asChild
                 >
-                  <a href="mailto:naman.mathpal@example.com">
+                  <a href="mailto:naman.work.mathpal@gmail.com">
                     <Mail className="h-5 w-5" />
                     <span className="sr-only">Email</span>
                   </a>
