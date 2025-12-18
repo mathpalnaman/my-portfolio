@@ -7,7 +7,6 @@ const config: Config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "*.{js,ts,jsx,tsx,mdx}",
   ],
   prefix: "",
   theme: {
@@ -26,8 +25,8 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#06b6d4", // Turquoise blue
-          foreground: "#ffffff",
+          DEFAULT: "hsl(var(--primary))", // Linked to globals.css
+          foreground: "hsl(var(--primary-foreground))",
           50: "#ecfeff",
           100: "#cffafe",
           200: "#a5f3fc",
@@ -44,8 +43,8 @@ const config: Config = {
           foreground: "hsl(var(--secondary-foreground))",
         },
         accent: {
-          DEFAULT: "#8b5cf6", // Purple - complementary to turquoise
-          foreground: "#ffffff",
+          DEFAULT: "hsl(var(--accent))", // Linked to globals.css
+          foreground: "hsl(var(--accent-foreground))",
           50: "#f5f3ff",
           100: "#ede9fe",
           200: "#ddd6fe",
@@ -56,19 +55,6 @@ const config: Config = {
           700: "#6d28d9",
           800: "#5b21b6",
           900: "#4c1d95",
-        },
-        coral: {
-          DEFAULT: "#f97316", // Orange-coral - warm complement
-          50: "#fff7ed",
-          100: "#ffedd5",
-          200: "#fed7aa",
-          300: "#fdba74",
-          400: "#fb923c",
-          500: "#f97316",
-          600: "#ea580c",
-          700: "#c2410c",
-          800: "#9a3412",
-          900: "#7c2d12",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -86,12 +72,27 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Kept Coral as a custom extension since standard shadcn doesn't have it
+        coral: {
+          DEFAULT: "#f97316", 
+          50: "#fff7ed",
+          100: "#ffedd5",
+          200: "#fed7aa",
+          300: "#fdba74",
+          400: "#fb923c",
+          500: "#f97316",
+          600: "#ea580c",
+          700: "#c2410c",
+          800: "#9a3412",
+          900: "#7c2d12",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      // ... kept your keyframes and animations as they are clean ...
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -127,13 +128,9 @@ const config: Config = {
         float: "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+}
 
 export default config

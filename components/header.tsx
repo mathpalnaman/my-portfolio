@@ -2,126 +2,127 @@
 
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
-import { Moon, Sun, Menu, X, Github, Linkedin, Mail, Sparkles } from "lucide-react"
+import Link from "next/link"
+import { Search, Bell, Menu, X, Mic, Sun, Moon } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useToast } from "@/hooks/use-toast"
 
-export function Header() {
-  const [mounted, setMounted] = useState(false)
+interface HeaderProps {
+  onSearch: (query: string) => void
+}
+
+export function Header({ onSearch }: HeaderProps) {
+  const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
-
+  const { toast } = useToast()
+  
   useEffect(() => {
-    setMounted(true)
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  if (!mounted) {
-    return null
-  }
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
+  const handleBellClick = () => {
+    toast({
+      title: "No new notifications",
+      description: "You are all caught up! Check back later for updates.",
+    })
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full glass-header">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
-          <div className="flex items-center">
-            <div className="flex items-center space-x-4">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary via-primary-400 to-accent rounded-2xl flex items-center justify-center shadow-lg floating">
-                  <span className="text-white font-bold text-lg">NM</span>
-                </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-coral to-coral-400 rounded-full flex items-center justify-center">
-                  <Sparkles className="w-2.5 h-2.5 text-white" />
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold gradient-text">Naman Mathpal</h1>
-                <p className="text-sm text-muted-foreground">Full-Stack Developer</p>
-              </div>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-background/50 backdrop-blur-sm"}`}>
+      <div className="container mx-auto px-4 h-16 flex items-center gap-4">
+        
+        {/* Mobile Menu Trigger */}
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden p-2 -ml-2 hover:bg-secondary rounded-full"
+        >
+          {isMenuOpen ? <X className="w-6 h-6"/> : <Menu className="w-6 h-6"/>}
+        </button>
+
+        {/* Logo / Brand */}
+        <Link href="/" className="hidden md:flex items-center gap-2 font-semibold text-lg tracking-tight">
+          <span className="text-primary text-xl">Naman</span>
+          <span className="text-muted-foreground">Portfolio</span>
+        </Link>
+
+        {/* Search Bar (Functional) */}
+        <div className="flex-1 max-w-2xl mx-auto">
+          <div className="relative group">
+            <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+              <Search className="h-4 w-4 text-muted-foreground" />
             </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {["About", "Projects", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-all duration-300 hover:scale-110 relative group"
-              >
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex items-center space-x-3">
-            {/* Social Links */}
-            <div className="hidden sm:flex items-center space-x-2">
-              {[
-                { icon: Github, href: "https://github.com/mathpalnaman", label: "GitHub" },
-                { icon: Linkedin, href: "https://www.linkedin.com/in/naman-mathpal-483297241/", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:naman.work.mathpal@gmail.com", label: "Email" },
-              ].map(({ icon: Icon, href, label }) => (
-                <Button
-                  key={label}
-                  variant="ghost"
-                  size="icon"
-                  className="h-10 w-10 rounded-xl hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-110"
-                  asChild
-                >
-                  <a href={href} target="_blank" rel="noopener noreferrer">
-                    <Icon className="h-4 w-4" />
-                    <span className="sr-only">{label}</span>
-                  </a>
-                </Button>
-              ))}
+            <input 
+              type="text" 
+              placeholder="Search projects (e.g., 'React', 'AI', 'Game')..." 
+              className="w-full h-10 pl-10 pr-10 rounded-full bg-secondary/50 border border-transparent focus:bg-background focus:border-primary/20 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm"
+              onChange={(e) => {
+                onSearch(e.target.value)
+                // Optional: Scroll to projects if user types
+                if(e.target.value.length > 0) {
+                   document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
+            />
+            <div className="absolute inset-y-0 right-3 flex items-center cursor-pointer hover:text-primary">
+              <Mic className="h-4 w-4 text-muted-foreground" />
             </div>
-
-            {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-10 w-10 rounded-xl hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-110"
-              onClick={toggleTheme}
-            >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden h-10 w-10 rounded-xl hover:bg-primary/10 hover:text-primary transition-all duration-300"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-              <span className="sr-only">Toggle menu</span>
-            </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden border-t border-white/20 dark:border-slate-700/20 py-6 modern-card mt-4">
-            <nav className="flex flex-col space-y-4">
-              {["About", "Projects", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors px-4 py-2 rounded-xl hover:bg-primary/5"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
-            </nav>
+        {/* Right Actions */}
+        <div className="flex items-center gap-1 sm:gap-2">
+          
+          {/* Theme Toggle */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full hover:bg-secondary"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            <span className="sr-only">Toggle theme</span>
+          </Button>
+
+          {/* Notifications */}
+          <Button 
+             variant="ghost" 
+             size="icon" 
+             className="rounded-full hidden sm:flex"
+             onClick={handleBellClick}
+          >
+            <Bell className="w-5 h-5 text-muted-foreground" />
+          </Button>
+          
+          {/* Profile Icon */}
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white text-xs font-bold ring-2 ring-background cursor-pointer hover:scale-105 transition-transform">
+            N
           </div>
-        )}
+        </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMenuOpen && (
+        <div className="absolute top-16 left-0 w-full bg-background border-b border-border p-4 shadow-xl md:hidden animate-in slide-in-from-top-2">
+           <nav className="flex flex-col gap-2">
+             {['About', 'Projects', 'Contact'].map(item => (
+               <Link 
+                 key={item} 
+                 href={`#${item.toLowerCase()}`}
+                 onClick={() => setIsMenuOpen(false)}
+                 className="p-3 hover:bg-secondary rounded-lg font-medium text-sm flex items-center justify-between"
+               >
+                 {item}
+               </Link>
+             ))}
+           </nav>
+        </div>
+      )}
     </header>
   )
 }

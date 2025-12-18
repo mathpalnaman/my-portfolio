@@ -1,178 +1,120 @@
-import { GraduationCap, Code, Trophy, Briefcase, Star, Sparkles, Target, Zap } from "lucide-react"
-
-const technicalSkills = {
-  Languages: ["Python", "C/C++", "SQL", "JavaScript", "TypeScript", "HTML/CSS"],
-  Frameworks: ["React.js", "Next.js", "Node.js", "FastAPI", "Truffle", "Express.js"],
-  DBMS: ["MongoDB", "PostgreSQL", "MySQL"],
-  Tools: ["Git", "VS Code", "PyCharm", "Blender", "Cursor", "Docker", "Figma"],
-  Libraries: ["Zustand", "Pandas", "NumPy", "Matplotlib"],
-  Coursework: ["Web Design", "DAA", "OS", "OOP", "DBMS", "Software Engineering", "AI/ML"],
-}
+import { ArrowRight, ShieldCheck, Cpu, Database, Layout, GitBranch, Terminal } from "lucide-react"
 
 export function About() {
   return (
-    <section id="about" className="py-24 section-bg relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <Sparkles className="w-4 h-4" />
-              About Developer
-            </div>
-            <h2 className="text-4xl sm:text-5xl font-bold gradient-text mb-6">Get to Know Me</h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
-              Dedicated developer with a strong foundation in computer science, focused on delivering innovative solutions and continuously expanding technical expertise.
-            </p>
+    <section id="about" className="py-8 border-b border-border/50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* HEADER: "About this developer" */}
+        <div className="flex items-center justify-between mb-6 group cursor-pointer">
+          <h2 className="text-xl font-bold flex items-center gap-2">
+            About this developer
+            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+          </h2>
+        </div>
+
+        {/* DESCRIPTION BLOCK */}
+        <div className="mb-10 text-sm sm:text-base text-muted-foreground leading-relaxed space-y-4">
+          <p>
+            Dedicated <span className="text-foreground font-medium">Full-Stack Developer</span> capable of engineering scalable solutions. 
+            Recently upgraded to <span className="text-foreground font-medium">Version 2025 (B.Tech Graduate)</span> with optimized algorithms and bug-free logic.
+          </p>
+          <p>
+            Features include a strong foundation in Computer Science, 150+ LeetCode solutions installed, and full compatibility with React, Node.js, and Cloud environments.
+          </p>
+          
+          {/* VERSION HISTORY (Experience/Education) */}
+          <div className="mt-6 border border-border rounded-xl p-4 bg-secondary/20">
+             <div className="font-semibold text-foreground mb-3 text-xs uppercase tracking-wider">Version History</div>
+             <div className="space-y-4">
+                <div className="flex gap-3">
+                   <div className="w-12 text-xs font-mono text-muted-foreground pt-1">Dec '25</div>
+                   <div>
+                      <div className="text-sm font-medium text-foreground">VyomGarud Intern</div>
+                      <div className="text-xs text-muted-foreground">Deployed Next.js landing page with Tailwind CSS.</div>
+                   </div>
+                </div>
+                <div className="flex gap-3">
+                   <div className="w-12 text-xs font-mono text-muted-foreground pt-1">Aug '25</div>
+                   <div>
+                      <div className="text-sm font-medium text-foreground">System Upgrade (Graduation)</div>
+                      <div className="text-xs text-muted-foreground">Completed B.Tech CSE with 6.7 CGPA.</div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
+
+        {/* DATA SAFETY BLOCK (Skills Metaphor) */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-bold">Technical Architecture</h2>
+          </div>
+          <div className="text-sm text-muted-foreground mb-6">
+            Architecture starts with understanding how developers handle data and performance.
+            <span className="block mt-1 text-xs border border-border inline-block px-2 py-1 rounded">
+               <ShieldCheck className="w-3 h-3 inline mr-1 align-middle text-green-500"/>
+               Verified Stack
+            </span>
           </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-            {[
-              { value: "4.8", label: "Rating", icon: Star, gradient: "from-primary to-primary-400" },
-              { value: "150+", label: "Problems Solved", icon: Code, gradient: "from-accent to-accent-400" },
-              { value: "6+", label: "Projects Built", icon: Briefcase, gradient: "from-coral to-coral-400" },
-              { value: "30%", label: "UX Improvement", icon: Target, gradient: "from-primary to-accent" },
-            ].map((stat, index) => (
-              <div key={index} className="modern-card p-6 text-center group">
-                <div
-                  className={`w-16 h-16 bg-gradient-to-br ${stat.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <stat.icon className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold gradient-text mb-2">{stat.value}</div>
-                <div className="text-sm font-medium text-slate-600 dark:text-slate-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Left Column */}
-            <div className="space-y-8">
-              {/* Education */}
-              <div className="modern-card p-8 group">
-                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-400 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <GraduationCap className="w-10 h-10 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold gradient-text mb-4">Education</h3>
-                    <div className="mb-6">
-                      <div className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                        B.Tech in Computer Science Engineering
-                      </div>
-                      <div className="text-primary font-semibold text-lg mb-1">
-                        KCC Institute of Technology & Management
-                      </div>
-                      <div className="text-slate-500 dark:text-slate-400 font-medium">2021 – 2025</div>
-                    </div>
-                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
-                      I'm Naman Mathpal, an adaptable developer with a strong foundation in computer science. I am committed to mastering both theoretical concepts and practical applications in software development.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Experience */}
-              <div className="modern-card p-8 group">
-                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-accent to-accent-400 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <Briefcase className="w-10 h-10 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold gradient-text mb-4">Experience</h3>
-                    <div className="mb-6">
-                      <div className="text-xl font-bold text-slate-900 dark:text-white mb-3">
-                        Front-End Developer Intern
-                      </div>
-                      <div className="flex items-center justify-center sm:justify-start gap-4 mb-4">
-                        <div className="rating-modern flex items-center gap-2">
-                          <Star className="w-4 h-4 rating-star" />
-                          <span className="font-bold">4.8 Rating</span>
-                        </div>
-                        <div className="success-modern flex items-center gap-2">
-                          <Zap className="w-4 h-4 text-coral" />
-                          <span className="font-bold">30% Engagement ↗</span>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
-                      Developed dynamic web pages that enhanced user experience and increased engagement through intuitive design and optimized performance.
-                    </p>
-                  </div>
-                </div>
+          <div className="border border-border rounded-xl overflow-hidden divide-y divide-border">
+            
+            {/* Frontend */}
+            <div className="p-4 flex gap-4 hover:bg-secondary/30 transition-colors">
+              <Layout className="w-6 h-6 text-muted-foreground mt-1" />
+              <div>
+                <h3 className="text-sm font-semibold text-foreground">Frontend Engineering</h3>
+                <p className="text-xs text-muted-foreground mt-1">
+                  React.js, Next.js 15, Tailwind CSS, TypeScript, Figma
+                </p>
               </div>
             </div>
 
-            {/* Right Column */}
-            <div className="space-y-8">
-              {/* Competitive Programming */}
-              <div className="modern-card p-8 group">
-                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-coral to-coral-400 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <Trophy className="w-10 h-10 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold gradient-text mb-4">Competitive Programming</h3>
-                    <div className="flex items-center justify-center sm:justify-start gap-4 mb-6">
-                      <div className="bg-gradient-to-r from-primary/10 to-accent/10 text-primary border-2 border-primary/20 px-6 py-3 rounded-2xl">
-                        <span className="text-3xl font-bold">150+</span>
-                        <span className="text-lg ml-2 font-semibold">Problems</span>
-                      </div>
-                    </div>
-                    <div className="flex justify-center sm:justify-start gap-3 mb-6">
-                      {["LeetCode", "HackerRank", "CodeChef"].map((platform) => (
-                        <span key={platform} className="modern-chip font-semibold">
-                          {platform}
-                        </span>
-                      ))}
-                    </div>
-                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
-                      Actively engaged in competitive programming and problem-solving, with a focus on algorithmic thinking and optimization. Consistently tackling challenging problems to sharpen analytical skills.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Technical Skills */}
-              <div className="modern-card p-8">
-                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary via-accent to-coral rounded-3xl flex items-center justify-center flex-shrink-0">
-                    <Code className="w-10 h-10 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold gradient-text mb-6">Technical Skills</h3>
-                    <div className="space-y-6">
-                      {Object.entries(technicalSkills).map(([category, skills]) => (
-                        <div key={category}>
-                          <h4 className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3 uppercase tracking-wide">
-                            {category}
-                          </h4>
-                          <div className="flex flex-wrap justify-center sm:justify-start gap-3">
-                            {skills.map((skill) => (
-                              <span key={skill} className="modern-chip font-semibold">
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+            {/* Backend */}
+            <div className="p-4 flex gap-4 hover:bg-secondary/30 transition-colors">
+              <Cpu className="w-6 h-6 text-muted-foreground mt-1" />
+              <div>
+                <h3 className="text-sm font-semibold text-foreground">Backend & API</h3>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Node.js, Express, FastAPI, REST Architecture
+                </p>
               </div>
             </div>
-          </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center mt-20">
-            <div className="modern-card p-12 max-w-4xl mx-auto">
-              <h3 className="text-3xl font-bold gradient-text mb-6">My Development Philosophy</h3>
-              <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
-                I strive to write clean, maintainable code and create solutions that are both efficient and user-friendly. Every project is an opportunity to learn, grow, and contribute to the tech community.
-              </p>
-              <button className="modern-button">Let's Build Something Amazing Together</button>
+            {/* Database */}
+            <div className="p-4 flex gap-4 hover:bg-secondary/30 transition-colors">
+              <Database className="w-6 h-6 text-muted-foreground mt-1" />
+              <div>
+                <h3 className="text-sm font-semibold text-foreground">Data Storage</h3>
+                <p className="text-xs text-muted-foreground mt-1">
+                  PostgreSQL, MongoDB, MySQL
+                </p>
+              </div>
             </div>
+
+            {/* Tools */}
+            <div className="p-4 flex gap-4 hover:bg-secondary/30 transition-colors">
+              <GitBranch className="w-6 h-6 text-muted-foreground mt-1" />
+              <div>
+                <h3 className="text-sm font-semibold text-foreground">DevOps & Tools</h3>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Docker, AWS (EC2/S3), Git, Linux, Vercel
+                </p>
+              </div>
+            </div>
+
+             {/* Problem Solving */}
+            <div className="p-4 flex gap-4 hover:bg-secondary/30 transition-colors">
+              <Terminal className="w-6 h-6 text-muted-foreground mt-1" />
+              <div>
+                <h3 className="text-sm font-semibold text-foreground">Algorithmic Core</h3>
+                <p className="text-xs text-muted-foreground mt-1">
+                  DSA in C++, Python Automation, Competitive Programming
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

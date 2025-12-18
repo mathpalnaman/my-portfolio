@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    /* --background: #f30d0d; */
-    --foreground: 15 23 42;
-    --card: 255 255 255;
-    --card-foreground: 15 23 42;
-    --popover: 255 255 255;
-    --popover-foreground: 15 23 42;
-    --primary: 6 182 212;
-    --primary-foreground: 255 255 255;
-    --secondary: 241 245 249;
-    --secondary-foreground: 51 65 85;
-    --muted: 241 245 249;
-    --muted-foreground: 100 116 139;
-    --accent: 139 92 246;
-    --accent-foreground: 255 255 255;
-    --destructive: 239 68 68;
-    --destructive-foreground: 255 255 255;
-    --border: 226 232 240;
-    --input: 226 232 240;
-    --ring: 6 182 212;
-    --radius: 16px;
+    --background: 0 0% 100%; /* Pure White */
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 199 89% 48%; /* Cyan-500 equivalent */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 199 89% 48%;
+    --radius: 0.75rem; 
   }
 
   .dark {
-    --background: 2 8 23;
-    --foreground: 248 250 252;
-    --card: 15 23 42;
-    --card-foreground: 248 250 252;
-    --popover: 15 23 42;
-    --popover-foreground: 248 250 252;
-    --primary: 6 182 212;
-    --primary-foreground: 255 255 255;
-    --secondary: 30 41 59;
-    --secondary-foreground: 226 232 240;
-    --muted: 30 41 59;
-    --muted-foreground: 148 163 184;
-    --accent: 139 92 246;
-    --accent-foreground: 255 255 255;
-    --destructive: 239 68 68;
-    --destructive-foreground: 255 255 255;
-    --border: 30 41 59;
-    --input: 30 41 59;
-    --ring: 6 182 212;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 199 89% 48%;
   }
 }
 
@@ -53,25 +53,8 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: white;
-  }
-
-  .dark body::before {
-    background: #020817;
   }
 
   html {
@@ -79,111 +62,58 @@
   }
 }
 
-@layer utilities {
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-}
 
 /* Modern glass morphism cards */
 .modern-card {
-  @apply bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-2xl border border-white/20 dark:border-slate-700/30;
-  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1), 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(0, 0, 0, 0.1)
-    inset;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-2xl border border-white/20 dark:border-slate-800/50;
+  transition: all 0.3s ease-out;
 }
 
 .modern-card:hover {
-  @apply transform -translate-y-2 scale-[1.02];
-  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2), 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 -1px 0 rgba(0, 0, 0, 0.1)
-    inset;
+  @apply transform -translate-y-1 shadow-lg;
 }
 
 /* Modern buttons */
 .modern-button {
-  @apply bg-gradient-to-r from-primary via-primary-400 to-accent text-white font-semibold px-8 py-4 rounded-2xl;
-  @apply shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300;
-  @apply border border-white/20;
+  @apply bg-gradient-to-r from-primary to-accent text-white font-semibold px-6 py-3 rounded-xl;
+  @apply shadow-md hover:shadow-xl transition-all duration-300;
   background-size: 200% 200%;
   animation: gradient-shift 3s ease-in-out infinite;
 }
 
 .modern-button:hover {
-  @apply scale-105;
-  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.4);
+  @apply scale-[1.02];
 }
 
 /* Modern chips */
 .modern-chip {
-  @apply bg-gradient-to-r from-slate-100/80 to-slate-200/80 dark:from-slate-700/80 dark:to-slate-600/80;
-  @apply text-slate-700 dark:text-slate-300 px-4 py-2 rounded-full text-sm font-medium;
-  @apply border border-white/30 dark:border-slate-600/30 backdrop-blur-sm;
-  @apply hover:scale-105 hover:shadow-lg transition-all duration-300;
+  @apply bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300;
+  @apply px-3 py-1 rounded-full text-sm font-medium border border-transparent hover:border-primary/50 transition-colors;
 }
 
 /* Glass header */
 .glass-header {
-  @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-white/20 dark:border-slate-700/30;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  @apply bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-50;
 }
 
 /* Gradient text */
 .gradient-text {
-  @apply bg-gradient-to-r from-slate-900 via-primary to-accent dark:from-white dark:via-primary-300 dark:to-accent-300;
-  @apply bg-clip-text text-transparent;
-  background-size: 200% 200%;
-  animation: gradient-shift 4s ease-in-out infinite;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-accent;
+  background-size: 200% auto;
 }
 
-/* Modern section backgrounds */
-.section-bg {
-  position: relative;
-  overflow: hidden;
+/* Animations */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Floating elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
 .floating {
   animation: float 6s ease-in-out infinite;
-}
-
-.floating:nth-child(2) {
-  animation-delay: -2s;
-}
-
-.floating:nth-child(3) {
-  animation-delay: -4s;
-}
-
-/* Status indicators */
-.status-online {
-  @apply bg-gradient-to-r from-primary to-primary-400 text-white px-3 py-1 rounded-full text-sm font-medium;
-  @apply border border-primary-200 shadow-lg;
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Rating styles with white instead of yellow */
-.rating-modern {
-  @apply bg-gradient-to-r from-white to-slate-100 dark:from-white/10 dark:to-white/10;
-  @apply text-white dark:text-white border border-white/30 dark:border-white/30;
-  @apply px-3 py-1.5 rounded-full text-sm font-semibold backdrop-blur-sm;
-}
-
-.rating-star {
-  @apply text-white fill-white;
-}
-
-/* Success indicators */
-.success-modern {
-  @apply bg-gradient-to-r from-coral-50 to-coral-100 dark:from-coral-900/30 dark:to-coral-800/30;
-  @apply text-coral-700 dark:text-coral-300 border border-coral-200 dark:border-coral-700/50;
-  @apply px-3 py-1.5 rounded-full text-sm font-semibold backdrop-blur-sm;
 }

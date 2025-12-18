@@ -7,27 +7,29 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Naman Mathpal - Computer Science Student & Developer",
+  title: "Naman Mathpal | Full-Stack Developer",
   description:
-    "Computer Science student and passionate developer specializing in web development, competitive programming, and innovative solutions.",
+    "Full-Stack Developer specializing in React, Node.js, and Cloud Native solutions. 2025 Computer Science Graduate focused on scalable web applications.",
   keywords: [
-    "developer",
-    "portfolio",
-    "computer science",
-    "student",
-    "react",
-    "next.js",
-    "typescript",
-    "competitive programming",
+    "Full-Stack Developer",
+    "Software Engineer",
+    "React Developer",
+    "Next.js",
+    "Node.js",
+    "AWS",
+    "Docker",
+    "Portfolio",
   ],
   authors: [{ name: "Naman Mathpal" }],
   openGraph: {
-    title: "Naman Mathpal - Computer Science Student & Developer",
+    title: "Naman Mathpal | Full-Stack Developer",
     description:
-      "Computer Science student and passionate developer specializing in web development, competitive programming, and innovative solutions.",
+      "Full-Stack Developer specializing in React, Node.js, and Cloud Native solutions. 2025 Computer Science Graduate.",
     type: "website",
+    // Add these if you have a deployed URL and a preview image later
+    // url: 'https://naman-mathpal.vercel.app/',
+    // images: ['/opengraph-image.png'],
   },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -38,7 +40,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
       </body>
