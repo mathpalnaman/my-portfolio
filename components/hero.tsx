@@ -1,11 +1,23 @@
 'use client'
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Star, Download, Share2, Info, CheckCircle2, ArrowRight } from "lucide-react"
+// import { Badge } from "@/components/ui/badge"
+import { Star, Download, Share2, Info, CheckCircle2, ArrowRight, X } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export function Hero() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
+  // Screenshots data
+  const screenshots = [
+    { src: "/screenshots/data-alchemist.png", alt: "Data Alchemist Screenshot" },
+    { src: "/screenshots/vichar.png", alt: "Vichar Screenshot" },
+    { src: "/screenshots/hackle.png", alt: "Hackle Screenshot" },
+    { src: "/screenshots/cricfolio.png", alt: "Cricfolio Screenshot" },
+    { src: "/screenshots/aeroguard.png", alt: "Aeroguard Screenshot" },
+  ]
   return (
     <section className="relative pt-32 pb-12 overflow-hidden bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -124,39 +136,113 @@ export function Hero() {
 
         {/* PREVIEW CARDS (Tech Stack) */}
         <div>
-           <h2 className="text-lg font-bold mb-4">Preview</h2>
-           <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x">
-              {/* Screenshot 1 */}
-              <div className="min-w-[200px] sm:min-w-[250px] aspect-[9/16] bg-slate-900 rounded-2xl p-4 flex flex-col justify-end relative overflow-hidden snap-center border border-border">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"/>
-                  <div className="relative z-20">
-                     <div className="text-white font-bold text-lg">React Expert</div>
-                     <div className="text-slate-300 text-xs">Complex UIs & Animations</div>
-                  </div>
-                  <div className="absolute top-4 left-4 bg-blue-500/20 px-2 py-1 rounded text-xs text-blue-400 font-mono border border-blue-500/30">src/components</div>
-              </div>
-
-               {/* Screenshot 2 */}
-              <div className="min-w-[200px] sm:min-w-[250px] aspect-[9/16] bg-slate-900 rounded-2xl p-4 flex flex-col justify-end relative overflow-hidden snap-center border border-border">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"/>
-                  <div className="relative z-20">
-                     <div className="text-white font-bold text-lg">Backend Logic</div>
-                     <div className="text-slate-300 text-xs">Node.js, Postgres & AWS</div>
-                  </div>
-                  <div className="absolute top-4 left-4 bg-green-500/20 px-2 py-1 rounded text-xs text-green-400 font-mono border border-green-500/30">server/api</div>
-              </div>
-
-               {/* Screenshot 3 */}
-              <div className="min-w-[200px] sm:min-w-[250px] aspect-[9/16] bg-slate-900 rounded-2xl p-4 flex flex-col justify-end relative overflow-hidden snap-center border border-border">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"/>
-                  <div className="relative z-20">
-                     <div className="text-white font-bold text-lg">Competitive</div>
-                     <div className="text-slate-300 text-xs">150+ Problems Solved</div>
-                  </div>
-                  <div className="absolute top-4 left-4 bg-orange-500/20 px-2 py-1 rounded text-xs text-orange-400 font-mono border border-orange-500/30">leetcode/hard</div>
-              </div>
+           <h2 className="text-lg font-bold mb-4">App Previews</h2>
+           <div className="flex gap-4 overflow-x-auto pb-6 scrollbar-hide snap-x">
+              
+              {screenshots.map((screen, index) => (
+                <div 
+                  key={index}
+                  onClick={() => setSelectedImage(screen.src)}
+                  className="min-w-[280px] sm:min-w-[320px] aspect-video bg-secondary rounded-2xl relative overflow-hidden snap-center border border-border group cursor-pointer hover:ring-2 hover:ring-primary/50 transition-all"
+                >
+                    <Image 
+                      src={screen.src} 
+                      alt={screen.alt}
+                      fill 
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                </div>
+              ))}
            </div>
         </div>
+
+        {/* FULL SCREEN LIGHTBOX */}
+        {selectedImage && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm animate-in fade-in duration-200"
+            onClick={() => setSelectedImage(null)}
+          >
+            {/* Close Button Hint */}
+            <button className="absolute top-6 right-6 text-white/70 hover:text-white p-2">
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* Image Container - 70% Width on Desktop */}
+            <div 
+              className="relative w-[95vw] md:w-[70vw] aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10"
+              onClick={(e) => e.stopPropagation()} // Prevents closing if clicking ONLY the image (optional, remove to close on image click too)
+            >
+              <Image 
+                src={selectedImage} 
+                alt="Full screen preview" 
+                fill 
+                className="object-contain"
+              />
+            </div>
+            
+            <div className="absolute bottom-10 text-white/50 text-sm font-medium">
+              Click anywhere to close
+            </div>
+          </div>
+        )}
+              {/* Project 1: Data Alchemist */}
+              {/* <div className="min-w-[280px] sm:min-w-[320px] aspect-video bg-secondary rounded-2xl relative overflow-hidden snap-center border border-border group">
+                  <Image 
+                    src="/data-alchemist.png" 
+                    alt="Data Alchemist Screenshot" 
+                    fill 
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  /> */}
+                  {/* Subtle gradient overlay for depth */}
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+              </div> */}
+
+               {/* Project 2: Vichar */}
+              {/* <div className="min-w-[280px] sm:min-w-[320px] aspect-video bg-secondary rounded-2xl relative overflow-hidden snap-center border border-border group">
+                  <Image 
+                    src="/vichar.png" 
+                    alt="Vichar Screenshot" 
+                    fill 
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+              </div> */}
+
+               {/* Project 3: Hackle */}
+              {/* <div className="min-w-[280px] sm:min-w-[320px] aspect-video bg-secondary rounded-2xl relative overflow-hidden snap-center border border-border group">
+                  <Image 
+                    src="/hackle.png" 
+                    alt="Hackle Screenshot" 
+                    fill 
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+              </div> */}
+
+              {/* Project 4: Cricfolio */}
+              {/* <div className="min-w-[280px] sm:min-w-[320px] aspect-video bg-secondary rounded-2xl relative overflow-hidden snap-center border border-border group">
+                  <Image 
+                    src="/cricfolio.png" 
+                    alt="Cricfolio Screenshot" 
+                    fill 
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+              </div> */}
+              {/* Project 5: AeroGuard */}
+              {/* <div className="min-w-[280px] sm:min-w-[320px] aspect-video bg-secondary rounded-2xl relative overflow-hidden snap-center border border-border group">
+                  <Image 
+                    src="/aeroguard.png" 
+                    alt="Aeroguard Screenshot" 
+                    fill 
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+              </div> */}
+{/* 
+           </div>
+        </div> */}
 
       </div>
     </section>

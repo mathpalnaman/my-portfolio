@@ -5,47 +5,63 @@
 @layer base {
   :root {
     --background: 0 0% 100%; /* Pure White */
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 199 89% 48%; /* Cyan-500 equivalent */
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 262 83% 58%;
-    --accent-foreground: 210 40% 98%;
+    --popover-foreground: 240 10% 3.9%;
+    
+    /* Play Store Green (Emerald-600) */
+    --primary: 158 64% 52%; 
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+    
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    
+    /* Deep Slate for Accents (Instead of Purple) */
+    --accent: 215 25% 27%;
+    --accent-foreground: 0 0% 98%;
+    
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 199 89% 48%;
-    --radius: 0.75rem; 
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 158 64% 52%; /* Matches Primary */
+    
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 199 89% 48%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 262 83% 58%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 199 89% 48%;
+    --background: 240 10% 4%; /* Deep Black/Gray */
+    --foreground: 0 0% 98%;
+    --card: 240 10% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 4%;
+    --popover-foreground: 0 0% 98%;
+    
+    /* Slightly lighter green for dark mode readability */
+    --primary: 158 64% 52%;
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
+    
+    --accent: 215 25% 27%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 158 64% 52%;
   }
 }
 
@@ -56,64 +72,47 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
-
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
   }
 }
 
-
-/* Modern glass morphism cards */
+/* Modern glass cards (Cleaned up gradients) */
 .modern-card {
-  @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-2xl border border-white/20 dark:border-slate-800/50;
-  transition: all 0.3s ease-out;
+  @apply bg-card border border-border rounded-xl shadow-sm transition-all duration-300;
 }
 
 .modern-card:hover {
-  @apply transform -translate-y-1 shadow-lg;
+  @apply shadow-md border-primary/20 transform -translate-y-1;
 }
 
 /* Modern buttons */
 .modern-button {
-  @apply bg-gradient-to-r from-primary to-accent text-white font-semibold px-6 py-3 rounded-xl;
-  @apply shadow-md hover:shadow-xl transition-all duration-300;
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease-in-out infinite;
-}
-
-.modern-button:hover {
-  @apply scale-[1.02];
+  @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-full;
+  @apply shadow-sm hover:shadow-lg hover:bg-primary/90 transition-all duration-300;
 }
 
 /* Modern chips */
 .modern-chip {
-  @apply bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300;
-  @apply px-3 py-1 rounded-full text-sm font-medium border border-transparent hover:border-primary/50 transition-colors;
+  @apply bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs font-medium border border-transparent;
 }
 
-/* Glass header */
+/* Header */
 .glass-header {
-  @apply bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-50;
+  @apply bg-background/90 backdrop-blur-md border-b border-border sticky top-0 z-50;
 }
 
-/* Gradient text */
+/* Removed the "gradient-text" animation to reduce AI feel */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-accent;
-  background-size: 200% auto;
+  @apply text-foreground;
 }
 
-/* Animations */
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Status indicators */
+.status-online {
+  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.floating {
-  animation: float 6s ease-in-out infinite;
+.rating-modern {
+  @apply flex items-center gap-1 font-bold text-sm;
 }

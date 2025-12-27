@@ -28,17 +28,17 @@ export function About() {
              <div className="font-semibold text-foreground mb-3 text-xs uppercase tracking-wider">Version History</div>
              <div className="space-y-4">
                 <div className="flex gap-3">
-                   <div className="w-12 text-xs font-mono text-muted-foreground pt-1">Dec '25</div>
-                   <div>
-                      <div className="text-sm font-medium text-foreground">VyomGarud Intern</div>
-                      <div className="text-xs text-muted-foreground">Deployed Next.js landing page with Tailwind CSS.</div>
-                   </div>
-                </div>
-                <div className="flex gap-3">
                    <div className="w-12 text-xs font-mono text-muted-foreground pt-1">Aug '25</div>
                    <div>
                       <div className="text-sm font-medium text-foreground">System Upgrade (Graduation)</div>
                       <div className="text-xs text-muted-foreground">Completed B.Tech CSE with 6.7 CGPA.</div>
+                   </div>
+                </div>
+                <div className="flex gap-3">
+                   <div className="w-12 text-xs font-mono text-muted-foreground pt-1">Aug '21</div>
+                   <div>
+                      <div className="text-sm font-medium text-foreground">Core Foundation (Schooling)</div>
+                      <div className="text-xs text-muted-foreground">Completed Class XII (Intermediate) with strong fundamentals.</div>
                    </div>
                 </div>
              </div>
