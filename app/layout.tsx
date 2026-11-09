@@ -26,6 +26,20 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
   },
+  twitter: { card: "summary_large_image" },
+}
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE.name,
+  jobTitle: SITE.role,
+  url: SITE.url,
+  email: `mailto:${SITE.email}`,
+  address: { "@type": "PostalAddress", addressRegion: "Delhi NCR", addressCountry: "IN" },
+  worksFor: { "@type": "Organization", name: "Synonyms Online Pvt. Ltd." },
+  alumniOf: "KCC Institute of Technology and Management",
+  sameAs: [SITE.github, SITE.linkedin],
 }
 
 export default function RootLayout({
@@ -36,6 +50,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={roboto.variable}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, "\u003c") }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

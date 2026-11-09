@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button"
 import { SITE } from "@/lib/site"
 
 const screenshots = [
-  { src: "/screenshots/data-alchemist.png", alt: "Data Alchemist: upload and validate spreadsheets" },
-  { src: "/screenshots/vichar.png", alt: "Vichaar: AI idea validation report" },
-  { src: "/screenshots/cricfolio.png", alt: "CricFolio: cricket tournament website" },
+  { src: "/screenshots/data-alchemist.webp", alt: "Data Alchemist: upload and validate spreadsheets" },
+  { src: "/screenshots/vichaar.webp", alt: "Vichaar: AI idea validation report" },
+  { src: "/screenshots/cricfolio.webp", alt: "CricFolio: cricket tournament website" },
 ]
 
 // Every value here comes from the resume or the public npm/Maven listings.

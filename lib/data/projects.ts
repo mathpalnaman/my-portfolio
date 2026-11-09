@@ -45,7 +45,7 @@ export const projects: Project[] = [
     category: "Business",
     description:
       "AI-assisted idea validation: checks an idea against existing patents and startups and returns market insights and suggestions.",
-    image: "/vichar-icon.png",
+    image: "/vichaar-icon.png",
     tags: ["React", "FastAPI", "Clerk", "Tailwind"],
     links: [
       { label: "Live demo", href: "https://vichaar-rho.vercel.app/", kind: "primary" },

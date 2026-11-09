@@ -5,12 +5,10 @@ import { useTheme } from "next-themes"
 import Link from "next/link"
 import { Search, Menu, X, Sun, Moon } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useSearch } from "@/components/search-context"
 
-interface HeaderProps {
-  onSearch: (query: string) => void
-}
-
-export function Header({ onSearch }: HeaderProps) {
+export function Header() {
+  const { setQuery } = useSearch()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
@@ -19,7 +17,7 @@ export function Header({ onSearch }: HeaderProps) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -55,7 +53,7 @@ export function Header({ onSearch }: HeaderProps) {
               placeholder="Search projects (e.g., 'React', 'AI', 'Game')..." 
               className="w-full h-10 pl-10 pr-4 rounded-full bg-secondary/50 border border-transparent focus:bg-background focus:border-primary/20 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm"
               onChange={(e) => {
-                onSearch(e.target.value)
+                setQuery(e.target.value)
                 // Optional: Scroll to projects if user types
                 if(e.target.value.length > 0) {
                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })

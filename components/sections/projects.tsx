@@ -1,11 +1,11 @@
+"use client"
+
+import { useSearch } from "@/components/search-context"
 import { ProjectCard } from "@/components/project-card"
 import { projects } from "@/lib/data/projects"
 
-interface ProjectsProps {
-  searchQuery: string
-}
-
-export function Projects({ searchQuery }: ProjectsProps) {
+export function Projects() {
+  const { query: searchQuery } = useSearch()
   const query = searchQuery.trim().toLowerCase()
   const filtered = projects.filter(
     (p) =>
