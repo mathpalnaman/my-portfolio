@@ -1,34 +1,30 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Roboto } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { SITE } from "@/lib/site"
 
-const inter = Inter({ subsets: ["latin"] })
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
   title: "Naman Mathpal | Full-Stack Developer",
   description:
-    "Full-Stack Developer specializing in React, Node.js, and Cloud Native solutions. 2025 Computer Science Graduate focused on scalable web applications.",
-  keywords: [
-    "Full-Stack Developer",
-    "Software Engineer",
-    "React Developer",
-    "Next.js",
-    "Node.js",
-    "AWS",
-    "Docker",
-    "Portfolio",
-  ],
+    "Full-stack developer in Delhi NCR building React, Next.js, Laravel and Node.js platforms. Author of hinglish-profanity on npm and Maven Central.",
+  alternates: { canonical: "/" },
   authors: [{ name: "Naman Mathpal" }],
   openGraph: {
     title: "Naman Mathpal | Full-Stack Developer",
     description:
-      "Full-Stack Developer specializing in React, Node.js, and Cloud Native solutions. 2025 Computer Science Graduate.",
+      "Full-stack developer in Delhi NCR. Author of hinglish-profanity on npm and Maven Central.",
     type: "website",
-    // Add these if you have a deployed URL and a preview image later
-    // url: 'https://naman-mathpal.vercel.app/',
-    // images: ['/opengraph-image.png'],
+    url: "/",
   },
 }
 
@@ -39,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={roboto.variable}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
