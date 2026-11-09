@@ -61,7 +61,7 @@ export const projects: Project[] = [
     tags: ["React", "Vite", "Tailwind", "Framer Motion", "FastAPI"],
     links: [
       { label: "Live demo", href: "https://cricket-gules.vercel.app/", kind: "primary" },
-      { label: "Code", href: "https://github.com/mathpalnaman/-cricket", kind: "secondary" },
+      { label: "Code", href: "https://github.com/mathpalnaman/cricfolio", kind: "secondary" },
     ],
   },
 ]
